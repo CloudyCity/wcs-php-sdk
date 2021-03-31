@@ -1,6 +1,7 @@
 <?php
 namespace Wcs\Upload;
 
+use GuzzleHttp\Exception\RequestException;
 use Wcs;
 use Wcs\Http\PutPolicy;
 use Wcs\Config;
@@ -273,7 +274,7 @@ class ResumeUploader
                 }
             },
             'rejected' => function (TransferException $e, $index) {
-                if ($e->hasResponse() == false) {
+                if ($e instanceof RequestException && $e->hasResponse() == false) {
                     fwrite($this->rcdLogHandle, date('Y-m-d H:i:s') . " " . "请求超时！" . "\n");
 
                     $index = $this->hash[$index];

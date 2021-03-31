@@ -1,3 +1,14 @@
+## Fork说明
+
+针对官方SDK做了以下优化：
+- 配置文件优先从`$_ENV`读取，配置名与原有Config类的常量名一致。如果你的项目未使用.env文件，则需要自行初始化`$_ENV`,参考 [phpdotenv](https://packagist.org/packages/vlucas/phpdotenv)
+- 修复`mkfile()`中的`implode()`参数顺序
+- 并发上传的reject兼容`ConnectionException`的抛出
+
+- - -
+以下为原文档
+- - -
+
 - [准备](#开发准备)
 - [安装](#安装说明)
 - [初始化](#初始化配置说明)
