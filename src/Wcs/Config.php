@@ -40,7 +40,8 @@ final class Config
     const WCS_CONCURRENCY = 5;
 
     public static function get($key) {
-        return (isset($_ENV[$key]) && $_ENV[$key] !== '') ? $_ENV[$key] : constant("self::$key");
+        $value = getenv($key);
+        return $value != '' ? $value : constant("self::$key");
     }
 }
 
